@@ -6,7 +6,9 @@ Original Link: https://developers.redhat.com/articles/2022/04/20/create-and-mana
 
 Added:
 - relogin inside nfs container
-- add no timeout
+- add no timeout on SSH
+
+### Note: This should be done on the VM, not remote SSH.
 
 ```
 # Login as kubeadmin
@@ -51,7 +53,7 @@ exit; exit
 
 #login inside
 export sec=xxxxxxxxxxxxxxx
-eval $(crc oc-env) &&  oc login -u kubeadmin -p $sec https://api.crc.testing:6443 
+oc login -u kubeadmin -p $sec https://api.crc.testing:6443 
 
 cat << EOF | oc apply -f -
 apiVersion: cache.jhouse.com/v1alpha1
